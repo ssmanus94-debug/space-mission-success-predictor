@@ -116,13 +116,14 @@ st.sidebar.markdown("[Project GitHub](https://github.com/ssmanus94-debug/space-m
 # HOME PAGE
 # =============================================================================
 if page == "🏠 Home":
-    st.title("🚀 Space Mission Success Predictor")
-    st.markdown("### Welcome, Commander!")
-    st.write("This app uses Machine Learning to predict the success of space exploration missions based on historical data patterns.")
+    st.title("🚀 Attempted Space Mission Success Predictor")
+    st.markdown("### Welcome, Space Commanders")
+    st.write("This app uses Machine Learning to predict the success of space exploration missions based on Projected historical data patterns. ")
     st.markdown("""
     **Available Tools:**
     - **Regression**: Predicts the exact **Success Rate (%)**.
     - **Classification**: Predicts the **Success Category** (Low, Medium, High).
+    - **Be Advised** - projected historical space data is synthetic, and largely random. This caused the predictive nature of the model to be.. not precise...
     """)
 
 # =============================================================================
