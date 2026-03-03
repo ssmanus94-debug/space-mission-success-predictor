@@ -323,7 +323,7 @@ If you didn't find your own dataset, you'll be using the **Craigslist Cars and T
 
 **Dataset Link:** https://www.kaggle.com/datasets/austinreese/craigslist-carstrucks-data
 
-**Your task:** Predict the **price** of used vehicles.
+**Your task:** Predict the success rate of Space Mission
 
 ### Why This Dataset?
 
@@ -429,7 +429,7 @@ Reach out to Abishek on Slack if you have any questions or get stuck!
 
 **Target Variable:** Success Rate (%)
 
-**Selected Features:** Features used: ['Tech_Budget_Power', 'Duration (in Days)', 'Technology Used_Reusable Rocket', 'Budget_Per_Day', 'Tech_Maturity', 'Technology Used_Nuclear Propulsion', 'Year', 'Budget (in Billion $)']
+**Selected Features:** Features used: [ 'Duration (in Days)', 'Tech_Maturity', 'Budget (in Billion $), 'MIssion Type (manned vs Unmanned)']
 
 **Best Regression Model:** Random Forest Model - Logistic Regression **Test Accuracy:** 0.3683  ,   **F1 Score:** 0.2280
 
