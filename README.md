@@ -433,7 +433,7 @@ Reach out to Abishek on Slack if you have any questions or get stuck!
 
 **Best Regression Model:** Random Forest Model - Logistic Regression **Test Accuracy:** 0.3683  ,   **F1 Score:** 0.2280
 
-**Deployed App URL:** [Add your Streamlit Cloud URL once deployed]
+**Deployed App URL:** [[Add your Streamlit Cloud URL once deployed]](https://space-mission-success-predictor-agjwhq6fhgltjyzebbyc7m.streamlit.app/)
 
 ### Project Highlights
 
