@@ -110,7 +110,7 @@ with st.sidebar.expander("⚙️ Input Variables"):
 
 st.sidebar.markdown("---")
 st.sidebar.info(f"**Built by:** Sean McManus\n\nFull Stack Academy AI & ML Bootcamp 2026")
-st.sidebar.markdown("[Project GitHub](https://github.com/ssmanus94-debug/space-mission-success-predictor)")info("Built by: **Sean McManus**\n\nFull Stack Academy AI & ML Bootcamp")
+st.sidebar.markdown("[Project GitHub](https://github.com/ssmanus94-debug/space-mission-success-predictor)")
 
 # =============================================================================
 # HOME PAGE
