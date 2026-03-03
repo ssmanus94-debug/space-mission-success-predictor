@@ -422,19 +422,16 @@ Reach out to Abishek on Slack if you have any questions or get stuck!
 
 > **Important:** This section is the first thing visitors see when they land on your GitHub repo. This is your portfolio—make it professional and complete! Update this before your final submission.
 
-**Student Name:** [Your Name]
+**Student Name:** Sean McManus
+**Dataset:** "Global_Space_Exploration_Dataset.csv" at link: https://www.kaggle.com/datasets/atharvasoundankar/global-space-exploration-dataset-2000-2025
 
-**Dataset:** [Dataset name and source - include a link if from Kaggle]
+**Problem Statement:** Trying to accurately predict the success rate for a Space mission based on the factors that go into making preparing and executing a space mission. This dataset is (synthetic) of 25 years of previous space exploration missions and has many different details of the mission.
 
-**Problem Statement:** [What are you trying to predict and why? Write 2-3 sentences explaining the value of this prediction.]
+**Target Variable:** Success Rate (%)
 
-**Target Variable:** [Column name - e.g., "price" or "salary"]
+**Selected Features:** Features used: ['Tech_Budget_Power', 'Duration (in Days)', 'Technology Used_Reusable Rocket', 'Budget_Per_Day', 'Tech_Maturity', 'Technology Used_Nuclear Propulsion', 'Year', 'Budget (in Billion $)']
 
-**Selected Features:** [List the 4-8 features your final model uses]
-
-**Best Regression Model:** [Model type and key metric - e.g., "Random Forest (R² = 0.82)"]
-
-**Best Classification Model:** [Model type and key metric - e.g., "Gradient Boosting (Accuracy = 85%)"]
+**Best Regression Model:** Random Forest Model - Logistic Regression **Test Accuracy:** 0.3683  ,   **F1 Score:** 0.2280
 
 **Deployed App URL:** [Add your Streamlit Cloud URL once deployed]
 
@@ -442,6 +439,6 @@ Reach out to Abishek on Slack if you have any questions or get stuck!
 
 [Write 2-3 bullet points about interesting findings or challenges you overcame. This helps employers understand your thought process!]
 
--
--
--
+-my dataset was sadly fully synthetic, and also fully random, making it nearly impossible to make a regression model with the data.
+-I was still able to understand all sorts of effects of each model training method. having the baseling be (random and unchanging showed me how each of the skews SHOULD have been.
+-I learned a lot about the Feature importznce and changing/creating features can even change the effect of "illegible" data. 
