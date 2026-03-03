@@ -129,7 +129,7 @@ if page == "🏠 Home":
 # =============================================================================
 # REGRESSION PAGE
 # =============================================================================
-elif page == "📈 Regression Model":
+elif page == "📈 Regression Model = Random Forest Model":
     st.title("📈 Success Rate Prediction")
     models = load_models()
     if models:
@@ -161,7 +161,7 @@ elif page == "📈 Regression Model":
 # =============================================================================
 # CLASSIFICATION PAGE
 # =============================================================================
-elif page == "🏷️ Classification Model":
+elif page == "🏷️ Classification Model - Logistic Regression Model":
     st.title("🏷️ Success Category Prediction")
     models = load_models()
     if models:
