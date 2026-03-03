@@ -25,22 +25,6 @@ Author: Sean McManus #
 Dataset: Global_Space_Exploration_Dataset.csv  
 """
 
-import streamlit as st
-import pandas as pd
-import numpy as np
-import joblib
-from pathlib import Path
-
-# =============================================================================
-# PAGE CONFIGURATION
-# =============================================================================
-# This must be the first Streamlit command!
-st.set_page_config(
-    page_title="ML Prediction App",  # TODO: Update with your project name
-    page_icon="🤖",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
 
 # =============================================================================
 # HELPER FUNCTIONS
@@ -56,7 +40,7 @@ from pathlib import Path
 # PAGE CONFIGURATION
 # =============================================================================
 st.set_page_config(
-    page_title="Space Mission Success Predictor",
+    page_title="Attempted Space Mission Success Predictor",
     page_icon="🚀",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -105,11 +89,28 @@ def make_classification_prediction(models, input_data):
 # =============================================================================
 # SIDEBAR
 # =============================================================================
-st.sidebar.title("Navigation")
-page = st.sidebar.radio("Choose a model:", ["🏠 Home", "📈 Regression Model", "🏷️ Classification Model"])
+
+st.sidebar.title("🚀 Mission Control")
+page = st.sidebar.radio("Navigate:", ["🏠 Home", "📈 Regression Model", "🏷️ Classification Model"])
 
 st.sidebar.markdown("---")
-st.sidebar.info("Built by: **Sean McManus**\n\nFull Stack Academy AI & ML Bootcamp")
+
+# --- DATA DICTIONARY SECTION ---
+st.sidebar.markdown("### 📊 Data Dictionary")
+
+with st.sidebar.expander("🎯 Target Variables"):
+    st.write("**Success Rate (%):** The predicted numerical probability of mission achievement (Regression).")
+    st.write("**Success Category:** Classification of mission outcome into Low, Medium, or High success (Classification).")
+
+with st.sidebar.expander("⚙️ Input Variables"):
+    st.write("**Budget:** Total funding in Billions of USD.")
+    st.write("**Duration:** Expected mission length in Earth days.")
+    st.write("**Mission Type:** Whether the craft is Manned (crewed) or Unmanned (robotic).")
+    st.write("**Tech Maturity:** A calculated rank (1-5) based on the chosen technology, where 1 is legacy and 5 is experimental/AI-driven.")
+
+st.sidebar.markdown("---")
+st.sidebar.info(f"**Built by:** Sean McManus\n\nFull Stack Academy AI & ML Bootcamp 2026")
+st.sidebar.markdown("[Project GitHub](https://github.com/ssmanus94-debug/space-mission-success-predictor)")info("Built by: **Sean McManus**\n\nFull Stack Academy AI & ML Bootcamp")
 
 # =============================================================================
 # HOME PAGE
