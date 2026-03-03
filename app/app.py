@@ -120,15 +120,17 @@ st.sidebar.markdown("---")
 st.sidebar.markdown("### About")
 st.sidebar.info(
     """
-    This app deploys machine learning models trained on [YOUR DATASET].
+    This app deploys machine learning models trained on the **Global Space Exploration Dataset**.
 
-    - **Regression**: Predicts [YOUR TARGET]
-    - **Classification**: Predicts [YOUR CATEGORIES]
+    - **Regression**: Predicts the **Success Rate (%)** of a mission.
+    - **Classification**: Predicts the **Success Category** (Low to High).
+    
+    ** Please be advised - This model is trained synthetic historical exploration data. Predictions are based on budget and technological parameters provided in the dataset.
     """
 )
 # TODO: UPDATE YOUR NAME HERE! This shows visitors who built this app.
-st.sidebar.markdown("**Built by:** [YOUR NAME]")
-st.sidebar.markdown("[GitHub Repo](https://github.com/YOUR-USERNAME/YOUR-REPO)")
+st.sidebar.markdown("**Built by:** Sean McManus")
+st.sidebar.markdown("[GitHub Repo](https://github.com/ssmanus94-debug/space-mission-success-predictor")
 
 
 # =============================================================================
@@ -325,7 +327,7 @@ st.markdown("---")
 st.markdown(
     """
     <div style='text-align: center; color: gray;'>
-        Built by [YOUR NAME] | Full Stack Academy AI & ML Bootcamp
+        Built by Sean McManus | Full Stack Academy AI & ML Bootcamp
     </div>
     """,
     unsafe_allow_html=True
