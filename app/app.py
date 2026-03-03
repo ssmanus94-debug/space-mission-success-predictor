@@ -64,7 +64,7 @@ def load_models():
         # Load classification model and artifacts
         models['classification_model'] = joblib.load(base_path / "classification_model.pkl")
         models['classification_scaler'] = joblib.load(base_path / "classification_scaler.pkl")
-        models['label_encoder'] = joblib.load(base_path / "label_encoder.pkl")
+        models['label_encoder'] = joblib.load(base_path / "ordered_encoding.pkl")
         models['classification_features'] = joblib.load(base_path / "classification_features.pkl")
 
         # Optional: Load binning info for display
@@ -91,14 +91,20 @@ def make_regression_prediction(models, input_data):
 
 
 def make_classification_prediction(models, input_data):
-    """Make a classification prediction."""
-    # Scale the input
+    # 1. Scale
     input_scaled = models['classification_scaler'].transform(input_data)
-    # Predict
-    prediction = models['classification_model'].predict(input_scaled)
-    # Get label
-    label = models['label_encoder'].inverse_transform(prediction)
-    return label[0], prediction[0]
+    
+    # 2. Predict (returns 0, 1, or 2)
+    prediction_num = models['classification_model'].predict(input_scaled)[0]
+    
+    # 3. Translate using your ordered_encoding dictionary
+    mapping_dict = models['label_encoder'] # This is your { "Low Success": 0, ... }
+    
+    # Flip it to { 0: "Low Success", 1: "Medium Success", ... }
+    reverse_mapping = {v: k for k, v in mapping_dict.items()}
+    
+    label_name = reverse_mapping[prediction_num]
+    return label_name, prediction_num
 
 
 # =============================================================================
@@ -243,7 +249,8 @@ elif page == "🏷️ Classification Model":
 
     # Get feature names and class labels
     features = models['classification_features']
-    class_labels = models['label_encoder'].classes_
+    # Use .keys() because your encoder is a dictionary, not a sklearn object
+    class_labels = list(models['label_encoder'].keys())
 
     # Show the possible categories
     st.info(f"**Possible Categories:** {', '.join(class_labels)}")
@@ -295,9 +302,9 @@ elif page == "🏷️ Classification Model":
         # Display result with color coding
         # TODO: Customize colors based on your categories
         color_map = {
-            'Low': '🔴',
-            'Medium': '🟡',
-            'High': '🟢'
+            'Low Success': '🔴',
+            'Medium Success': '🟡',
+            'High Success': '🟢'
         }
         emoji = color_map.get(predicted_label, '🔵')
 
