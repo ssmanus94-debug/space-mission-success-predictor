@@ -46,21 +46,20 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# =============================================================================
-# HELPER FUNCTIONS
-# =============================================================================
+
 @st.cache_resource
 def load_models():
     """Load all saved models and artifacts."""
     base_path = Path(__file__).parent.parent / "models"
     models = {}
     try:
-        # Load regression artifacts
+        # Load the Regresssion models 
+        # what is an Artifact
         models['regression_model'] = joblib.load(base_path / "regression_model.pkl")
         models['regression_scaler'] = joblib.load(base_path / "regression_scaler.pkl")
         models['regression_features'] = joblib.load(base_path / "regression_features.pkl")
 
-        # Load classification artifacts
+        # Unput the classification models
         models['classification_model'] = joblib.load(base_path / "classification_model.pkl")
         models['classification_scaler'] = joblib.load(base_path / "classification_scaler.pkl")
         models['label_encoder'] = joblib.load(base_path / "ordered_encoding.pkl")
@@ -87,7 +86,7 @@ def make_classification_prediction(models, input_data):
     return reverse_mapping[prediction_num]
 
 # =============================================================================
-# SIDEBAR
+# SIDEBAR STUFFFF
 # =============================================================================
 
 st.sidebar.title("🚀 Mission Control")
@@ -95,7 +94,7 @@ page = st.sidebar.radio("Navigate:", ["🏠 Home", "📈 Regression Model", "�
 
 st.sidebar.markdown("---")
 
-# --- DATA DICTIONARY SECTION ---
+# ---!!!!11!! DATA DICTIONARY SECTION!!!! ---
 st.sidebar.markdown("### 📊 Data Dictionary")
 
 with st.sidebar.expander("🎯 Target Variables"):
@@ -127,8 +126,10 @@ if page == "🏠 Home":
     """)
 
 # =============================================================================
-# REGRESSION PAGE
+# REGRESSION PAGE- ####should have percentage output !!                             @@@ Wendy has reccomended me changing my target variable to Budget... need to check this  !!!!!! ASK ABISHEK
 # =============================================================================
+
+# - .selectbox is the feature for making Drop-Down menues!!!!  fpor changing non-numerical features(for the audience) this is extremely important
 elif page == "📈 Regression Model":
     st.title("📈 Success Rate Prediction - Random Forest Model")
     models = load_models()
@@ -137,16 +138,16 @@ elif page == "📈 Regression Model":
         
         col1, col2 = st.columns(2)
         with col1:
-            budget = st.slider("Budget (in Billion $)", 0.1, 100.0, 10.0, key="reg_b")
+            budget = st.slider("Budget (in Billion $)", 0.1, 100.0, 10.0, key="reg_b")   # Id like to personally thank Wendy for the inpiration to use sliders. the input_numbers did not look good'
             duration = st.slider("Duration (in Days)", 1, 3000, 365, key="reg_d")
             mission_type = st.selectbox("Mission Type", ["Manned", "Unmanned"], key="reg_m")
         with col2:
-            tech_choice = st.selectbox("Technology Used", ["Traditional Rocket", "Nuclear Propulsion", "Reusable Rocket", "Solar Propulsion", "AI_Navigation"], key="reg_t")
+            tech_choice = st.selectbox("Technology Used", ["Traditional Rocket", "Nuclear Propulsion", "Reusable Rocket", "Solar Propulsion", "AI_Navigation"], key="reg_t")  
             tech_rank_map = {"Traditional Rocket": 1, "Solar Propulsion": 2, "Nuclear Propulsion": 3, "Reusable Rocket": 4, "AI_Navigation": 5}
             tech_maturity = tech_rank_map[tech_choice]
             st.info(f"**Tech Maturity Rank:** {tech_maturity}")
 
-        # Build DataFrame
+        # Neither of these datadrames are working for my UNMANNED selection. Unmanned doesnt exist and its not working with it. the Drop_first=True has screwed me over.
         reg_df = pd.DataFrame(0.0, index=[0], columns=features)
         reg_df['Budget (in Billion $)'] = budget
         reg_df['Duration (in Days)'] = duration
@@ -159,7 +160,7 @@ elif page == "📈 Regression Model":
             st.success(f"### Predicted Success Rate: {res:,.2f}%")
 
 # =============================================================================
-# CLASSIFICATION PAGE
+# CLASSIFICATION PAGE     (in case of Target variable switch up , ask abishek about using budget insted of Success rate and ask how this would affect bins..
 # =============================================================================
 elif page == "🏷️ Classification Model":
     st.title("🏷️ Success Category Prediction - Logistical Regression Model")
@@ -178,7 +179,7 @@ elif page == "🏷️ Classification Model":
             tech_maturity = tech_rank_map[tech_choice]
             st.info(f"**Tech Maturity Rank:** {tech_maturity}")
 
-        # Build DataFrame
+        # Getting constant errors.  Might have to go back to the data pre-processin to make sure manned vs unmanned is actually in the data.
         cls_df = pd.DataFrame(0.0, index=[0], columns=features)
         cls_df['Budget (in Billion $)'] = budget
         cls_df['Duration (in Days)'] = duration
@@ -191,7 +192,7 @@ elif page == "🏷️ Classification Model":
             emoji = {'Low Success': '🔴', 'Medium Success': '🟡', 'High Success': '🟢'}.get(label, '⚪')
             st.success(f"### Result: {emoji} {label}")
             if label == "High Success": st.balloons()
-
+#BUld Dataframe NOT WORKING
 # =============================================================================
 # FOOTER
 # =============================================================================
